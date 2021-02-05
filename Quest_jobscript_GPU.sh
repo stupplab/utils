@@ -31,3 +31,10 @@ gmx_mpi grompp -f sim_eq.mdp -p PA.top -c sim_min.gro -o sim_eq.tpr -maxwarn 2
 
 ## Run mdrun on multiple cores. Throw the output to out.log
 mpirun -np 2 gmx_mpi mdrun -deffnm sim_eq -v -cpt 30 &> out.log
+
+# Using a quick benchmark, 
+# GROMACS 2020.3 runs fastest using GPU with the following command on Quest
+# mpirun -np 4 gmx_mpi mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -npme 1 # using 4 GPUs
+# gmx mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -update gpu # using 1 GPU
+
+
