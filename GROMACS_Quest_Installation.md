@@ -14,7 +14,7 @@ module purge all
 module load cmake/3.12.0
 module load cuda/cuda-9.2
 ```
-You are also put the above `cmake` and `cuda` load commands in your `~/.bash_profile` so that these module automatically get loaded when you `ssh quest`.
+You are also put the above `cmake` and `cuda` load commands in your `~/.bash_profile` so that these module load automatically when you ssh to the quest server.
 
 ```
 cd <path>/<to>/gromacs-2020.3
@@ -26,4 +26,10 @@ make install
 ```
 
 Finally add the following line in your `~/.bash_profile`
-`PATH="/home/<user>/.local/gromacs/bin:$PATH"`
+`PATH="$HOME/.local/gromacs/bin:$PATH"`
+
+
+### A quick benchmark using this GROMACS version
+An atomistic simulation consisting 200 PAs in a 12x12x12 nm box for 100 ns completes in 
+- 7 days using 1 GPU  | command: gmx mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -update gpu
+- 4 days using 4 GPUs | command: mpirun -np 4 gmx_mpi mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -npme 1
