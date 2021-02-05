@@ -31,5 +31,5 @@ Finally add the following line in your `~/.bash_profile`
 
 ### A quick benchmark using this GROMACS version
 An atomistic simulation consisting 200 PAs in a 12x12x12 nm box for 100 ns completes in 
-- 7 days using 1 GPU  | command: gmx mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -update gpu
-- 4 days using 4 GPUs | command: mpirun -np 4 gmx_mpi mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -npme 1
+- 7 days using 1 GPU      | command: `gmx mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -update gpu`
+- 4 days using 4 GPUs     | command: `mpirun -np 4 gmx_mpi mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -npme 1`
