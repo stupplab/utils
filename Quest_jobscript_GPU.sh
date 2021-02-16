@@ -34,7 +34,7 @@ mpirun -np 2 gmx_mpi mdrun -deffnm sim_eq -v -cpt 30 &> out.log
 
 # Using a quick benchmark, 
 # GROMACS 2020.3 runs fastest using GPU with the following command on Quest
-# mpirun -np 4 gmx_mpi mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -npme 1 # using 4 GPUs
+# mpirun -np 4 gmx_mpi mdrun -deffnm md -v -cpt 5 -rdd 2 -nb gpu -pme gpu -npme 1 # using 4 GPUs
 # gmx mdrun -deffnm md -v -cpt 5 -nb gpu -pme gpu -update gpu # using 1 GPU
 
 
