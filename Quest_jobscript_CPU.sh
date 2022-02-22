@@ -10,14 +10,20 @@
 #SBATCH --error=<file_path>     # Path for errors must already exist - e.g. /path/job.err
 #SBATCH --job-name="<name>"     # Name of job
 
-# unload any modules that carried over from your command line session
-module purge
 
 # add a project directory to your PATH (if needed)
 # export PATH=$PATH:/projects/p30009/<dirname>
 
 # load modules you need to use
-module load gromacs/5.0.4
+module purge
+module use /software/spack_production/spack/share/spack/modules/linux-rhel7-x86_64/
+module load gcc/10.3.0-gcc
+module load intel-oneapi-compilers/2021.3.0-gcc
+module load intel-mkl/2020.4.304-intel
+module load cuda/11.4.0-intel
+source /software/spack_production/spack/opt/spack/linux-rhel7-x86_64/intel-2021.3.0/gromacs-2021.5/bin/GMXRC
+
+export OMP_NUM_THREADS=13
 
 ## A command you actually want to execute: Example showed for running gmx
 
@@ -28,4 +34,4 @@ module load gromacs/5.0.4
 # gmx mdrun -deffnm sim_eq -v -cpt 30 &> out.log
 
 ## Run mdrun on multiple cores. Throw the output to out.log
-mpirun -np 2 gmx_mpi mdrun -deffnm sim_eq -v -cpt 30 &> out.log
+gmx -ntmpi 2 mdrun -deffnm sim_eq -v -cpt 30 &> out.log
