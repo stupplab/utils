@@ -4,7 +4,7 @@
 #SBATCH -t 11:00:00             # Walltime/duration of the job
 #SBATCH -N 1                    # Number of Nodes
 #SBATCH --ntasks-per-node=4     # Number of Cores (CPU Processors). 2 GPU nodes have 52 available CPU cores
-#SBATCH --gres=gpu:a100:2       # Extra line for gpu jobs specifying number of gpus
+#SBATCH --gres=gpu:2            # Extra line for gpu jobs specifying number of gpus
 #SBATCH --mem=10G               # Memory request per node
 #SBATCH --mail-user=<email_id>  # Designate email address for job communications
 #SBATCH --mail-type=END         # Events options are job BEGIN, END, NONE, FAIL, REQUEUE
